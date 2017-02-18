@@ -1,13 +1,22 @@
-# Routes
-# This file defines all application routes (Higher priority routes first)
-# ~~~~
+# ROUTES
+# This file defines all application routes (Higher priority routes first).
+#
+# The urls map to actions in the controller.
 
 # Home page
 GET     /                           controllers.Application.index
-POST    /users                      controllers.Application.createUser
-GET     /users/:id                  controllers.Application.findUserById(id: Long)
-PUT     /users/:id                  controllers.Application.updateUser(id: Long)
-DELETE  /users/:id                  controllers.Application.deleteUser(id: Long)
+
+POST    /dev/:devid/actor/:actorid/status             controllers.Application.updateStatus(devid: String, actorid: String)
+GET     /dev/:devid/actor/:actorid/status             controllers.Application.getStatus(devid: String, actorid: String)
+
+POST    /dev/:devid/actor/:actorid/target             controllers.Application.updateTarget(devid: String, actorid: String)
+GET     /dev/:devid/actor/:actorid/target             controllers.Application.getTarget(devid: String, actorid: String)
+
+POST    /dev/:devid/actor/:actorid/infos              controllers.Application.updateInfo(devid: String, actorid: String)
+GET     /dev/:devid/actor/:actorid/infos              controllers.Application.getInfo(devid: String, actorid: String)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
+
+
