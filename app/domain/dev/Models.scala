@@ -2,7 +2,7 @@ package domain.dev
 
 import play.api.libs.json.Writes
 
-object Boms {
+object Models {
 
   type InfosRaw = List[String]
   type StatusRaw = Map[String, String]

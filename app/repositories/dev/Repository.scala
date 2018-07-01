@@ -2,7 +2,7 @@ package repositories.dev
 
 import java.util.concurrent.ConcurrentHashMap
 
-import domain.dev.Boms._
+import domain.dev.Models._
 
 trait RepositoryComponent {
   val repository: Repository
@@ -31,26 +31,12 @@ trait RepositoryComponentImpl extends RepositoryComponent {
     val status = new ConcurrentHashMap[ActorId, ActorStatus]
     val targets = new ConcurrentHashMap[ActorId, ActorTarget]
 
-    override def getInfo(a: ActorId): ActorInfo = {
-      infos.get(a)
-    }
-    override def updateInfo(a: ActorId, i: ActorInfo): Unit = {
-      infos.put(a, i)
-    }
-
-    override def getStatus(a: ActorId): ActorStatus = {
-      status.get(a)
-    }
-    override def updateStatus(i: ActorId, s: ActorStatus): Unit = {
-      status.put(i, s)
-    }
-
-    override def getTarget(a: ActorId): ActorTarget = {
-      targets.get(a)
-    }
-    override def updateTarget(a: ActorId, t: ActorTarget): Unit = {
-      targets.put(a, t)
-    }
+    override def getInfo(a: ActorId): ActorInfo = infos.get(a)
+    override def updateInfo(a: ActorId, i: ActorInfo): Unit = infos.put(a, i)
+    override def getStatus(a: ActorId): ActorStatus = status.get(a)
+    override def updateStatus(i: ActorId, s: ActorStatus): Unit = status.put(i, s)
+    override def getTarget(a: ActorId): ActorTarget = targets.get(a)
+    override def updateTarget(a: ActorId, t: ActorTarget): Unit = targets.put(a, t)
 
   }
 

@@ -1,6 +1,6 @@
 package services.dev
 
-import domain.dev.Boms._
+import domain.dev.Models._
 import repositories.dev.RepositoryComponent
 
 trait ServiceComponent {

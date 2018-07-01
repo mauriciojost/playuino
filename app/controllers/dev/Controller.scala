@@ -1,7 +1,7 @@
 package controllers.dev
 
-import domain.dev.Boms.Implicits._
-import domain.dev.Boms._
+import domain.dev.Models.Implicits._
+import domain.dev.Models._
 import play.api.Logger
 import play.api.libs.json.Json
 import play.api.mvc.{Action, Controller => PlayController}
@@ -20,7 +20,7 @@ trait Controller extends PlayController {
 
   def updateInfo(devId: String, actorId: String) = Action(parse.json) { request =>
     val i = ActorId(devId, actorId)
-    val f = ActorInfo(request.body.as[List[String]])
+    val f = ActorInfo(request.body.as[InfosRaw])
     service.updateInfo(i, f)
     Logger.info(s"Update info $i: $f")
     Ok
@@ -35,7 +35,7 @@ trait Controller extends PlayController {
 
   def updateStatus(devId: String, actorId: String) = Action(parse.json) { request =>
     val i = ActorId(devId, actorId)
-    val s = ActorStatus(request.body.as[Map[String, String]])
+    val s = ActorStatus(request.body.as[StatusRaw])
     service.updateStatus(i, s)
     Logger.info(s"Update status $i: $s")
     Ok
@@ -50,7 +50,7 @@ trait Controller extends PlayController {
 
   def updateTarget(devId: String, actorId: String) = Action(parse.json) { request =>
     val i = ActorId(devId, actorId)
-    val t = ActorTarget(request.body.as[Map[String, String]])
+    val t = ActorTarget(request.body.as[TargetRaw])
     service.updateTarget(i, t)
     Logger.info(s"Update target $i: $t")
     Ok
